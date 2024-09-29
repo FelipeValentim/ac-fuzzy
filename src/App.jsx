@@ -9,14 +9,14 @@ function App() {
     temperature: 0,
     humidity: 0,
     roomSize: 9,
-    umidificator: false,
+    respiratoryProblem: "no",
   });
 
   const [result, setResult] = useState("");
   // Criar uma distribuição normal com média 0 e desvio padrão 1
 
-  const assessAC = (temperature, humidity, roomSize) => {
-    return rulesFuzzy(temperature, humidity, roomSize);
+  const assessAC = (temperature, humidity, roomSize, respiratoryProblem) => {
+    return rulesFuzzy(temperature, humidity, roomSize, respiratoryProblem);
   };
 
   const handleSubmit = (e) => {
@@ -24,7 +24,8 @@ function App() {
     const acResult = assessAC(
       answer.temperature,
       answer.humidity,
-      answer.roomSize
+      answer.roomSize,
+      answer.respiratoryProblem
     );
     setResult(acResult);
   };
@@ -83,15 +84,20 @@ function App() {
         </div>
         <div className="form-group">
           <label>
-            Tem umidificador no cômodo?
-            <input
-              type="checkbox"
-              checked={answer.umidificator}
-              onChange={(e) =>
-                setAnswer({ ...answer, umidificator: !answer.umidificator })
-              }
+            Tem problemas respiratórios?
+            <select
               className="form-input"
-            />
+              onChange={(e) =>
+                setAnswer({
+                  ...answer,
+                  respiratoryProblem: Number(e.target.value),
+                })
+              }
+            >
+              <option value={0}>Não</option>
+              <option value={40}>Leve</option>
+              <option value={100}>Grave</option>
+            </select>
           </label>
         </div>
         <button type="submit" className="submit-button">

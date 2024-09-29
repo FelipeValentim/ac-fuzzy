@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -19,6 +20,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
 const ChartFuzzy = () => {
   const temperatureData = {
     labels: [0, 5, 10, 15, 20, 25, 30, 35, 40],
@@ -42,14 +44,6 @@ const ChartFuzzy = () => {
         fill: false,
       },
     ],
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true,
-          max: 1, // Graus de pertencimento variam de 0 a 1
-        },
-      },
-    },
   };
 
   const humidityData = {
@@ -57,55 +51,81 @@ const ChartFuzzy = () => {
     datasets: [
       {
         label: "Baixa Umidade",
-        data: [1, 1, 1, 0.5, 0, 0, 0, 0, 0, 0, 0], // 0 a 40%
+        data: [1, 1, 1, 0.5, 0, 0, 0, 0, 0, 0, 0],
         borderColor: "blue",
         fill: false,
       },
       {
         label: "Umidade Moderada",
-        data: [0, 0, 0, 0, 0.5, 1, 1, 0.5, 0, 0, 0], // 30 a 70%
+        data: [0, 0, 0, 0, 0.5, 1, 1, 0.5, 0, 0, 0],
         borderColor: "orange",
         fill: false,
       },
       {
         label: "Alta Umidade",
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0.5, 1, 1], // 60 a 100%
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0.5, 1, 1],
         borderColor: "red",
         fill: false,
       },
     ],
   };
 
-  // Dados para o gráfico de tamanhos de sala
   const roomSizeData = {
     labels: [9, 15, 20, 30, 40, 50, 60],
     datasets: [
       {
         label: "Pequena Sala",
-        data: [1, 1, 0.5, 0, 0, 0, 0], // 9 a 20 m²
+        data: [1, 1, 0.5, 0, 0, 0, 0],
         borderColor: "green",
         fill: false,
       },
       {
         label: "Sala Média",
-        data: [0, 0.5, 1, 1, 0.5, 0, 0], // 20 a 40 m²
+        data: [0, 0.5, 1, 1, 0.5, 0, 0],
         borderColor: "red",
         fill: false,
       },
       {
         label: "Grande Sala",
-        data: [0, 0, 0, 0.5, 1, 1, 1], // 40 a 60 m²
+        data: [0, 0, 0, 0.5, 1, 1, 1],
         borderColor: "purple",
         fill: false,
       },
     ],
   };
+
+  // Dados para o gráfico de Problemas Respiratórios
+  const respiratoryProblemData = {
+    labels: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+    datasets: [
+      {
+        label: "Sem Problema",
+        data: [1, 1, 1, 0.5, 0, 0, 0, 0, 0, 0, 0],
+        borderColor: "blue",
+        fill: false,
+      },
+      {
+        label: "Problema Leve",
+        data: [0, 0, 0.5, 1, 1, 0.5, 0, 0, 0, 0, 0],
+        borderColor: "orange",
+        fill: false,
+      },
+      {
+        label: "Problema Grave",
+        data: [0, 0, 0, 0, 0.5, 1, 1, 1, 1, 1, 1],
+        borderColor: "red",
+        fill: false,
+      },
+    ],
+  };
+
   return (
     <div>
       <Line data={temperatureData} />
       <Line data={humidityData} />
       <Line data={roomSizeData} />
-      {/* Adicionando o gráfico de tamanhos de sala */}
+      <Line data={respiratoryProblemData} />{" "}
+      {/* Adicionando o gráfico de Problemas Respiratórios */}
     </div>
   );
 };
