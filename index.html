@@ -5,6 +5,10 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="fuzzyLogic.js"></script>
+   <script src="raphael-min.js"></script>
+   <script src="presentation.js"></script>
+
    <link rel="stylesheet" href="styles.css">
    <title>Controle de Ar-Condicionado</title>
    <style>
@@ -12,18 +16,23 @@
    </style>
 </head>
 
-<body>
+<body onLoad="presentation();">
    <div class="container">
       <h2>Controle de Ar-Condicionado</h2>
 
       <div>
          <label for="temperatura">Temperatura Ambiente (°C):</label>
-         <input type="number" id="temperatura" min="0" max="40" oninput="validateInput(this)">
+         <input type="number" id="temperatura" min="0" max="40" value="30">
       </div>
 
       <div>
          <label for="umidade">Umidade (%):</label>
-         <input type="number" id="umidade" min="0" max="100" oninput="validateInput(this)">
+         <input type="number" id="umidade" min="0" max="100" value="50">
+      </div>
+
+      <div>
+         <label for="tamanho">Tamanho da sala (m²):</label>
+         <input type="number" id="tamanho" min="9" max="60" value="9">
       </div>
 
       <button id="calcular">Calcular</button>
@@ -36,21 +45,15 @@
    </div>
 
    <div class="charts">
+      <h1>Variáveis de Entrada:</h1>
+      <div id="variables_input"></div>
+      <hr>
+      <h1>Variáveis de Saída:</h1>
+      <div id="variable_output"></div>
+      <hr>
+      <h1>Inferências:</h1>
+      <div id="inferences"></div>
 
-      <div>
-         <h2>Temperatura</h2>
-         <canvas id="temperaturaChart" width="400" height="200"></canvas>
-
-      </div>
-      <div>
-         <h2>Umidade</h2>
-         <canvas id="umidadeChart" width="400" height="200"></canvas>
-      </div>
-
-      <div>
-         <h2>Potência do Ar-Condicionado</h2>
-         <canvas id="potenciaChart" width="400" height="200"></canvas>
-      </div>
    </div>
 
    <script src="fuzzy.js"></script>

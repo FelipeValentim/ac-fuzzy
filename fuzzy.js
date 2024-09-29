@@ -1,263 +1,92 @@
-// Definição dos universos de temperatura, umidade e potência
-const temperatura_universe = Array.from({ length: 45 }, (_, i) => i);
-const umidade_universe = Array.from({ length: 101 }, (_, i) => i);
-const potencia_universe = Array.from({ length: 101 }, (_, i) => i);
+// function validateInput(input) {
+//   const min = parseInt(input.min);
+//   const max = parseInt(input.max);
+//   let value = parseInt(input.value);
+//   if (!isNaN(value)) {
+//     if (value < min) {
+//       input.value = min;
+//     } else if (value > max) {
+//       input.value = max;
+//     }
+//   } else {
+//     input.value = min;
+//   }
+// }
 
-// Funções de pertinência para temperatura
-function temperatura_fria(x) {
-  return Math.max(Math.min((20 - x) / 10, 1), 0);
-}
-
-function temperatura_amena(x) {
-  const sigma = 2; // desvio padrão da gaussiana
-
-  return Math.exp(-0.5 * Math.pow((x - 25) / sigma, 2));
-}
-
-function temperatura_quente(x) {
-  return Math.max(Math.min((x - 20) / 10, 1), 0);
-}
-
-// Funções de pertinência para umidade
-function umidade_baixa(x) {
-  return Math.max(Math.min((40 - x) / 20, 1), 0);
-}
-
-function umidade_media(x) {
-  return Math.max(Math.min((x - 20) / 30, (80 - x) / 30), 0);
-}
-
-function umidade_alta(x) {
-  return Math.max(Math.min((x - 60) / 40, 1), 0);
-}
-
-// Funções de pertinência para potência do ar-condicionado
-function potencia_baixa(x) {
-  return Math.max(Math.min((35 - x) / 30, 1), 0);
-}
-
-function potencia_media(x) {
-  return Math.max(Math.min((x - 35) / 15, (65 - x) / 15), 0);
-}
-
-function potencia_alta(x) {
-  return Math.max(Math.min((x - 60) / 10, (100 - x) / 30), 0);
-}
-
-// Gerando os dados para temperatura
-function gerarDadosTemperatura() {
-  const fria = temperatura_universe.map((x) => temperatura_fria(x));
-  const amena = temperatura_universe.map((x) => temperatura_amena(x));
-  const quente = temperatura_universe.map((x) => temperatura_quente(x));
-  return { fria, amena, quente };
-}
-
-// Gerando os dados para umidade
-function gerarDadosUmidade() {
-  const baixa = umidade_universe.map((x) => umidade_baixa(x));
-  const media = umidade_universe.map((x) => umidade_media(x));
-  const alta = umidade_universe.map((x) => umidade_alta(x));
-  return { baixa, media, alta };
-}
-
-// Gerando os dados para potência do ar-condicionado
-function gerarDadosPotencia() {
-  const baixa = potencia_universe.map((x) => potencia_baixa(x));
-  const media = potencia_universe.map((x) => potencia_media(x));
-  const alta = potencia_universe.map((x) => potencia_alta(x));
-  return { baixa, media, alta };
-}
-
-// Função para criar os gráficos usando Chart.js
-function criarGrafico(id, labels, datasets, title) {
-  const ctx = document.getElementById(id).getContext("2d");
-  new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: labels,
-      datasets: datasets.map((dataset) => ({
-        ...dataset,
-        pointRadius: dataset.data.map((value) => (value > 0.001 ? 3 : 0)), // Define o tamanho dos pontos (0 se pertinência for 0)
-      })),
-    },
-    options: {
-      responsive: true,
-      title: {
-        display: true,
-        text: title,
-      },
-      scales: {
-        yAxes: [
-          {
-            ticks: {
-              beginAtZero: true,
-              max: 1,
-            },
-          },
-        ],
-      },
-    },
-  });
-}
-
-// Criando o gráfico de temperatura
-const temperatura_dados = gerarDadosTemperatura();
-criarGrafico(
-  "temperaturaChart",
-  temperatura_universe,
-  [
+var obj = {
+  crisp_input: [30, 50, 9], // Exemplo de entrada: temperatura 30°C e umidade 70%, Tamanho sala
+  variables_input: [
     {
-      label: "Fria",
-      data: temperatura_dados.fria,
-      borderColor: "blue",
-      fill: false,
+      name: "Temperatura Ambiente",
+      setsName: ["Frio", "Amena", "Quente"],
+      sets: [
+        [0, 0, 20, 25], // Fria
+        [20, 25, 25, 30], // Agradável
+        [25, 30, 40, 40], // Quente
+      ],
     },
     {
-      label: "Amena",
-      data: temperatura_dados.amena,
-      borderColor: "green",
-      fill: false,
+      name: "Umidade",
+      setsName: ["Baixa", "Média", "Alta"],
+      sets: [
+        [0, 0, 30, 40], // Baixa
+        [30, 40, 40, 70], // Moderada
+        [40, 70, 100, 100], // Alta
+      ],
     },
     {
-      label: "Quente",
-      data: temperatura_dados.quente,
-      borderColor: "red",
-      fill: false,
+      name: "Tamanho do comodo",
+      setsName: ["Pequena", "Médio", "Grande"],
+      sets: [
+        [9, 9, 15, 20], // Pequeno (9 m² a 20 m²)
+        [15, 20, 30, 40], // Médio (15 m² a 40 m²)
+        [30, 40, 60, 60], // Grande (30 m² a 60 m²)
+      ],
     },
   ],
-  "Funções de Pertinência - Temperatura"
-);
-
-// Criando o gráfico de umidade
-const umidade_dados = gerarDadosUmidade();
-criarGrafico(
-  "umidadeChart",
-  umidade_universe,
-  [
-    {
-      label: "Baixa",
-      data: umidade_dados.baixa,
-      borderColor: "blue",
-      fill: false,
-    },
-    {
-      label: "Média",
-      data: umidade_dados.media,
-      borderColor: "green",
-      fill: false,
-    },
-    {
-      label: "Alta",
-      data: umidade_dados.alta,
-      borderColor: "red",
-      fill: false,
-    },
+  variable_output: {
+    name: "Ar Condicionado",
+    setsName: ["Desligado", "Baixo", "Médio", "Alto"],
+    sets: [
+      [0, 0, 0, 25], // Desligado
+      [0, 25, 25, 50], // Baixa
+      [25, 50, 50, 75], // Média
+      [50, 75, 100, 100], // Alta
+    ],
+  },
+  inferences: [
+    [0, 1, 3],
+    [2, 3, 3],
+    [1, 2, 3],
   ],
-  "Funções de Pertinência - Umidade"
-);
+};
+var fl = new FuzzyLogic();
 
-// Criando o gráfico de potência do ar-condicionado
-const potencia_dados = gerarDadosPotencia();
-criarGrafico(
-  "potenciaChart",
-  potencia_universe,
-  [
-    {
-      label: "Baixa",
-      data: potencia_dados.baixa,
-      borderColor: "blue",
-      fill: false,
-    },
-    {
-      label: "Média",
-      data: potencia_dados.media,
-      borderColor: "green",
-      fill: false,
-    },
-    {
-      label: "Alta",
-      data: potencia_dados.alta,
-      borderColor: "red",
-      fill: false,
-    },
-  ],
-  "Funções de Pertinência - Potência do Ar-condicionado"
-);
-
-// Definindo as regras fuzzy
-function fuzzyRules(temperatura, umidade) {
-  // Avaliação das funções de pertinência
-  const temp_fria = temperatura_fria(temperatura);
-  const temp_amena = temperatura_amena(temperatura);
-  const temp_quente = temperatura_quente(temperatura);
-
-  const umid_baixa = umidade_baixa(umidade);
-  const umid_media = umidade_media(umidade);
-  const umid_alta = umidade_alta(umidade);
-
-  // Aplicação de regras fuzzy
-  const potencia_baixa_result = Math.min(temp_fria, umid_alta);
-  const potencia_media_result = Math.min(temp_amena, umid_media);
-  const potencia_alta_result = Math.max(temp_quente, umid_baixa);
-
-  // Combinação dos resultados fuzzy
-  return {
-    baixa: potencia_baixa_result,
-    media: potencia_media_result,
-    alta: potencia_alta_result,
-  };
-}
-
-function validateInput(input) {
-  const min = parseInt(input.min);
-  const max = parseInt(input.max);
-  let value = parseInt(input.value);
-  if (!isNaN(value)) {
-    if (value < min) {
-      input.value = min;
-    } else if (value > max) {
-      input.value = max;
-    }
-  } else {
-    input.value = min;
-  }
-}
-
-// Defuzzificação usando o método do centro de massa
-function defuzzificar(fuzzy_output) {
-  let numerador = 0;
-  let denominador = 0;
-
-  for (let i = 0; i <= 100; i++) {
-    const baixa = potencia_baixa(i) * fuzzy_output.baixa;
-    const media = potencia_media(i) * fuzzy_output.media;
-    const alta = potencia_alta(i) * fuzzy_output.alta;
-
-    const valor_pertinencia = Math.max(baixa, media, alta);
-    numerador += valor_pertinencia * i;
-    denominador += valor_pertinencia;
-  }
-
-  return numerador / denominador;
-}
-
-const fuzzy_output = fuzzyRules(temperatura, umidade);
-const potencia = defuzzificar(fuzzy_output);
-
-// Evento de clique do botão
 document.getElementById("calcular").addEventListener("click", () => {
   const temperatura = parseFloat(document.getElementById("temperatura").value);
   const umidade = parseFloat(document.getElementById("umidade").value);
+  const tamanho = parseFloat(document.getElementById("tamanho").value);
 
-  if (!isNaN(temperatura) && !isNaN(umidade)) {
-    if (temperatura < 0 || temperatura > 45 || umidade < 0 || umidade > 100) {
+  if (!isNaN(temperatura) && !isNaN(umidade) && !isNaN(tamanho)) {
+    if (
+      temperatura < 0 ||
+      temperatura > 45 ||
+      umidade < 0 ||
+      umidade > 100 ||
+      tamanho < 9 ||
+      tamanho > 60
+    ) {
       document.getElementById("resultado").innerText =
         "Por favor, insira valores válidos.";
     } else {
-      const fuzzy_output = fuzzyRules(temperatura, umidade);
-      const potencia = defuzzificar(fuzzy_output).toFixed(0);
+      var fl = new FuzzyLogic();
 
-      document.getElementById("resultado").innerText = potencia + "%";
+      const result = fl.getResult({
+        ...obj,
+        crisp_input: [temperatura, umidade, tamanho],
+      });
+
+      document.getElementById("resultado").innerText = result.toFixed(0) + "°C";
     }
   } else {
     document.getElementById("resultado").innerText =
