@@ -86,7 +86,7 @@ document.getElementById("calcular").addEventListener("click", () => {
         crisp_input: [temperatura, umidade, tamanho],
       });
 
-      document.getElementById("resultado").innerText = result.toFixed(0) + "°C";
+      document.getElementById("resultado").innerText = result.toFixed(0) + "%";
     }
   } else {
     document.getElementById("resultado").innerText =
