@@ -1,62 +1,13 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-   <script src="fuzzyLogic.js"></script>
-   <script src="raphael-min.js"></script>
-   <script src="presentation.js"></script>
-
-   <link rel="stylesheet" href="styles.css">
-   <title>Controle de Ar-Condicionado</title>
-   <style>
-
-   </style>
-</head>
-
-<body onLoad="presentation();">
-   <div class="container">
-      <h2>Controle de Ar-Condicionado</h2>
-
-      <div>
-         <label for="temperatura">Temperatura Ambiente (°C):</label>
-         <input type="number" id="temperatura" min="0" max="40" value="30">
-      </div>
-
-      <div>
-         <label for="umidade">Umidade (%):</label>
-         <input type="number" id="umidade" min="0" max="100" value="50">
-      </div>
-
-      <div>
-         <label for="tamanho">Tamanho da sala (m²):</label>
-         <input type="number" id="tamanho" min="9" max="60" value="9">
-      </div>
-
-      <button id="calcular">Calcular</button>
-
-      <div>
-         <h3>Ajuste do Ar-Condicionado:</h3>
-         <p class="mt-1" id="resultado">N/A</p>
-      </div>
-
-   </div>
-
-   <div class="charts">
-      <h1>Variáveis de Entrada:</h1>
-      <div id="variables_input"></div>
-      <hr>
-      <h1>Variáveis de Saída:</h1>
-      <div id="variable_output"></div>
-      <hr>
-      <h1>Inferências:</h1>
-      <div id="inferences"></div>
-
-   </div>
-
-   <script src="fuzzy.js"></script>
-</body>
-
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>
