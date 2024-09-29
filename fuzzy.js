@@ -60,8 +60,8 @@ var obj = {
     [1, 2, 3],
   ],
 };
-var fl = new FuzzyLogic();
-
+var fl = new FuzzyLogicAC();
+console.log("result", fl.computeACPower(20, 60));
 document.getElementById("calcular").addEventListener("click", () => {
   const temperatura = parseFloat(document.getElementById("temperatura").value);
   const umidade = parseFloat(document.getElementById("umidade").value);
@@ -79,13 +79,6 @@ document.getElementById("calcular").addEventListener("click", () => {
       document.getElementById("resultado").innerText =
         "Por favor, insira valores válidos.";
     } else {
-      var fl = new FuzzyLogic();
-
-      const result = fl.getResult({
-        ...obj,
-        crisp_input: [temperatura, umidade, tamanho],
-      });
-
       document.getElementById("resultado").innerText = result.toFixed(0) + "%";
     }
   } else {
