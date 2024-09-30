@@ -51,7 +51,7 @@ const ChartFuzzy = () => {
     datasets: [
       {
         label: "Baixa Umidade",
-        data: [1, 1, 1, 0.5, 0, 0, 0, 0, 0, 0, 0],
+        data: [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0],
         borderColor: "blue",
         fill: false,
       },
@@ -100,7 +100,7 @@ const ChartFuzzy = () => {
     datasets: [
       {
         label: "Sem Problema",
-        data: [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        data: [1, 1, 0.5, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         borderColor: "blue",
         fill: false,
       },

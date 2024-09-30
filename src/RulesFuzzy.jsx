@@ -37,7 +37,7 @@ export const rulesFuzzy = (
 
   var logicRespiratoryProblem = new Logic();
   const noProblem = new Trapezoid(0, 0, 10, 20); // Representa um nível de problema próximo a zero
-  const mildProblem = new Trapezoid(15, 25, 40, 50); // Problema leve
+  const mildProblem = new Trapezoid(15, 20, 40, 50); // Problema leve
   const severeProblem = new Trapezoid(40, 50, 101, 101); // Problema grave
 
   logicRespiratoryProblem.init("no", noProblem);
