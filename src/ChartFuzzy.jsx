@@ -33,13 +33,13 @@ const ChartFuzzy = () => {
       },
       {
         label: "Temperatura Moderada",
-        data: [0, 0, 0.5, 1, 1, 0.5, 0, 0, 0],
+        data: [0, 0, 0, 0, 1, 1, 0, 0, 0],
         borderColor: "orange",
         fill: false,
       },
       {
         label: "Alta Temperatura",
-        data: [0, 0, 0, 0, 0.5, 1, 1, 1, 1],
+        data: [0, 0, 0, 0, 0, 0, 1, 1, 1],
         borderColor: "red",
         fill: false,
       },
@@ -57,13 +57,13 @@ const ChartFuzzy = () => {
       },
       {
         label: "Umidade Moderada",
-        data: [0, 0, 0, 0, 0.5, 1, 1, 0.5, 0, 0, 0],
+        data: [0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
         borderColor: "orange",
         fill: false,
       },
       {
         label: "Alta Umidade",
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0.5, 1, 1],
+        data: [0, 0, 0, 0, 0, 0, 0, 0.5, 1, 1, 1],
         borderColor: "red",
         fill: false,
       },
@@ -75,19 +75,19 @@ const ChartFuzzy = () => {
     datasets: [
       {
         label: "Pequena Sala",
-        data: [1, 1, 0.5, 0, 0, 0, 0],
+        data: [1, 1, 0, 0, 0, 0, 0],
         borderColor: "green",
         fill: false,
       },
       {
         label: "Sala Média",
-        data: [0, 0.5, 1, 1, 0.5, 0, 0],
+        data: [0, 0, 1, 1, 0, 0, 0],
         borderColor: "red",
         fill: false,
       },
       {
         label: "Grande Sala",
-        data: [0, 0, 0, 0.5, 1, 1, 1],
+        data: [0, 0, 0, 0, 0, 1, 1],
         borderColor: "purple",
         fill: false,
       },
@@ -96,23 +96,23 @@ const ChartFuzzy = () => {
 
   // Dados para o gráfico de Problemas Respiratórios
   const respiratoryProblemData = {
-    labels: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+    labels: [0, 10, 15, 20, 30, 40, 50, 60, 70, 80, 90, 100],
     datasets: [
       {
         label: "Sem Problema",
-        data: [1, 1, 1, 0.5, 0, 0, 0, 0, 0, 0, 0],
+        data: [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         borderColor: "blue",
         fill: false,
       },
       {
         label: "Problema Leve",
-        data: [0, 0, 0.5, 1, 1, 0.5, 0, 0, 0, 0, 0],
+        data: [0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0],
         borderColor: "orange",
         fill: false,
       },
       {
         label: "Problema Grave",
-        data: [0, 0, 0, 0, 0.5, 1, 1, 1, 1, 1, 1],
+        data: [0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
         borderColor: "red",
         fill: false,
       },
