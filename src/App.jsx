@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css"; // Importando seu CSS
 
-import { rulesFuzzy } from "./rules";
+import { rulesFuzzy } from "./RulesFuzzy";
 import ChartFuzzy from "./ChartFuzzy";
 
 function App() {
@@ -22,17 +22,17 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const acResult = assessAC(
-      answer.temperature,
-      answer.humidity,
-      answer.roomSize,
-      answer.respiratoryProblem
+      Number(answer.temperature),
+      Number(answer.humidity),
+      Number(answer.roomSize),
+      Number(answer.respiratoryProblem)
     );
     setResult(acResult);
   };
 
   return (
     <div className="app-container">
-      <h1>Calculadora de Ar-Condicionado</h1>
+      <h1>Monitoramento de Ar-Condicionado</h1>
       <form onSubmit={handleSubmit} className="form-container">
         <div className="form-group">
           <label>
@@ -43,7 +43,7 @@ function App() {
               min="0"
               max="40"
               onChange={(e) =>
-                setAnswer({ ...answer, temperature: Number(e.target.value) })
+                setAnswer({ ...answer, temperature: e.target.value })
               }
               required
               className="form-input"
@@ -59,7 +59,7 @@ function App() {
               min="0"
               max="100"
               onChange={(e) =>
-                setAnswer({ ...answer, humidity: Number(e.target.value) })
+                setAnswer({ ...answer, humidity: e.target.value })
               }
               required
               className="form-input"
@@ -75,7 +75,7 @@ function App() {
               min="9"
               max="60"
               onChange={(e) =>
-                setAnswer({ ...answer, roomSize: Number(e.target.value) })
+                setAnswer({ ...answer, roomSize: e.target.value })
               }
               required
               className="form-input"

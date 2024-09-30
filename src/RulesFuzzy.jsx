@@ -107,8 +107,8 @@ const getResult = (
   // Temperatura baixa, umidade baixa, cômodo pequeno, problemas respiratórios leves
   else if (results[10]) base_result = "Desligado";
   // Temperatura baixa, umidade média, cômodo pequeno, problemas respiratórios leves
-  else if (results[11])
-    base_result = 28; // Temperatura baixa, umidade alta, cômodo pequeno, problemas respiratórios leves
+  else if (results[11]) base_result = "Desligado";
+  // Temperatura baixa, umidade alta, cômodo pequeno, problemas respiratórios leves
   else if (results[12])
     base_result = 27; // Temperatura média, umidade baixa, cômodo pequeno, problemas respiratórios leves
   else if (results[13])
@@ -116,11 +116,11 @@ const getResult = (
   else if (results[14])
     base_result = 25; // Temperatura média, umidade alta, cômodo pequeno, problemas respiratórios leves
   else if (results[15])
-    base_result = 23; // Temperatura alta, umidade baixa, cômodo pequeno, problemas respiratórios leves
+    base_result = 24; // Temperatura alta, umidade baixa, cômodo pequeno, problemas respiratórios leves
   else if (results[16])
-    base_result = 21; // Temperatura alta, umidade média, cômodo pequeno, problemas respiratórios leves
+    base_result = 23; // Temperatura alta, umidade média, cômodo pequeno, problemas respiratórios leves
   else if (results[17])
-    base_result = 19; // Temperatura alta, umidade alta, cômodo pequeno, problemas respiratórios leves
+    base_result = 22; // Temperatura alta, umidade alta, cômodo pequeno, problemas respiratórios leves
   // Para cômodos pequenos e problemas respiratórios "severe"
   else if (results[18]) base_result = "Desligado";
   // Temperatura baixa, umidade baixa, cômodo pequeno, problemas respiratórios severos
@@ -162,16 +162,16 @@ const getResult = (
   // Para cômodos médios e problemas respiratórios "mild"
   else if (results[36]) base_result = "Desligado";
   // Temperatura baixa, umidade baixa, cômodo médio, problemas respiratórios leves
-  else if (results[37])
-    base_result = 25; // Temperatura baixa, umidade média, cômodo médio, problemas respiratórios leves
+  else if (results[37]) base_result = "Desligado";
+  // Temperatura baixa, umidade média, cômodo médio, problemas respiratórios leves
   else if (results[38])
-    base_result = 24; // Temperatura baixa, umidade alta, cômodo médio, problemas respiratórios leves
+    base_result = 26; // Temperatura baixa, umidade alta, cômodo médio, problemas respiratórios leves
   else if (results[39])
-    base_result = 23; // Temperatura média, umidade baixa, cômodo médio, problemas respiratórios leves
+    base_result = 25; // Temperatura média, umidade baixa, cômodo médio, problemas respiratórios leves
   else if (results[40])
-    base_result = 22; // Temperatura média, umidade média, cômodo médio, problemas respiratórios leves
+    base_result = 24; // Temperatura média, umidade média, cômodo médio, problemas respiratórios leves
   else if (results[41])
-    base_result = 21; // Temperatura média, umidade alta, cômodo médio, problemas respiratórios leves
+    base_result = 23; // Temperatura média, umidade alta, cômodo médio, problemas respiratórios leves
   else if (results[42])
     base_result = 22; // Temperatura alta, umidade baixa, cômodo médio, problemas respiratórios leves
   else if (results[43])
@@ -194,9 +194,9 @@ const getResult = (
   else if (results[51])
     base_result = 24; // Temperatura alta, umidade baixa, cômodo médio, problemas respiratórios severos
   else if (results[52])
-    base_result = 22; // Temperatura alta, umidade média, cômodo médio, problemas respiratórios severos
+    base_result = 23; // Temperatura alta, umidade média, cômodo médio, problemas respiratórios severos
   else if (results[53])
-    base_result = 21; // Temperatura alta, umidade alta, cômodo médio, problemas respiratórios severos
+    base_result = 22; // Temperatura alta, umidade alta, cômodo médio, problemas respiratórios severos
   // Para cômodos grandes e problemas respiratórios "no"
   else if (results[54]) base_result = "Desligado";
   // Temperatura baixa, umidade baixa, cômodo grande, sem problemas respiratórios

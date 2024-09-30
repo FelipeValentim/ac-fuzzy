@@ -1,4 +1,3 @@
-import React from "react";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -10,6 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import "./ChartFuzzy.css";
 
 ChartJS.register(
   CategoryScale,
@@ -120,7 +120,7 @@ const ChartFuzzy = () => {
   };
 
   return (
-    <div>
+    <div className="chart-container">
       <Line data={temperatureData} />
       <Line data={humidityData} />
       <Line data={roomSizeData} />
