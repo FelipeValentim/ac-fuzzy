@@ -62,7 +62,7 @@ export const rulesFuzzy = (
   };
 
   assessments.evaluateAllRules(jsBoonInput);
-  console.log(assessments.getResult());
+
   return assessments.getResult();
 };
 
