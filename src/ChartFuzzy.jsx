@@ -119,12 +119,29 @@ const ChartFuzzy = () => {
     ],
   };
 
+  // Dados para o gráfico de Resultado
+  const resultData = {
+    labels: ["Desligado", 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16],
+    datasets: [
+      {
+        label: "Pertinência do Resultado",
+        data: [
+          0, 0.083, 0.167, 0.25, 0.333, 0.417, 0.5, 0.583, 0.667, 0.75, 0.833,
+          0.917, 1.0,
+        ],
+        borderColor: "purple",
+        fill: false,
+      },
+    ],
+  };
+
   return (
     <div className="chart-container">
       <Line data={temperatureData} />
       <Line data={humidityData} />
       <Line data={roomSizeData} />
-      <Line data={respiratoryProblemData} />{" "}
+      <Line data={respiratoryProblemData} />
+      <Line data={resultData} />
       {/* Adicionando o gráfico de Problemas Respiratórios */}
     </div>
   );

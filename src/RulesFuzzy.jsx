@@ -44,7 +44,7 @@ export const RulesFuzzy = (
   logicRespiratoryProblem.init("no", noProblem);
   logicRespiratoryProblem.or("mild", mildProblem);
   logicRespiratoryProblem.or("severe", severeProblem);
-  console.log(logicTemperature.rules);
+
   const assessments = getAssessments();
 
   const resTemperature = logicTemperature.defuzzify(temperature, "temperature");

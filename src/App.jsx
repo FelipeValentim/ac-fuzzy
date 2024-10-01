@@ -132,8 +132,6 @@ function App() {
           ))}
       </div>
       <ChartFuzzy />
-
-      {console.log(pertinences)}
     </div>
   );
 }
