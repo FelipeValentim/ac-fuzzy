@@ -89,3 +89,9 @@ label {
   color: #0c5460; /* Cor do texto do resultado */
   margin-bottom: 2rem;
 }
+
+.pertinences {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

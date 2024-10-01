@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css"; // Importando seu CSS
 
-import { rulesFuzzy } from "./RulesFuzzy";
+import { RulesFuzzy } from "./RulesFuzzy";
 import ChartFuzzy from "./ChartFuzzy";
 
 function App() {
@@ -9,14 +9,21 @@ function App() {
     temperature: 0,
     humidity: 0,
     roomSize: 9,
-    respiratoryProblem: "no",
+    respiratoryProblem: 0,
   });
+  const [pertinences, setPertinences] = useState();
 
   const [result, setResult] = useState("");
   // Criar uma distribuição normal com média 0 e desvio padrão 1
 
   const assessAC = (temperature, humidity, roomSize, respiratoryProblem) => {
-    return rulesFuzzy(temperature, humidity, roomSize, respiratoryProblem);
+    return RulesFuzzy(
+      temperature,
+      humidity,
+      roomSize,
+      respiratoryProblem,
+      setPertinences
+    );
   };
 
   const handleSubmit = (e) => {
@@ -111,7 +118,22 @@ function App() {
           </h2>
         </div>
       )}
+      <div className="pertinences">
+        {pertinences &&
+          Object.entries(pertinences).map(([name, pertinence], index) => (
+            <div key={index} className="pertinence-group">
+              <h3>{name}</h3>
+              {pertinence.map((x, index) => (
+                <div key={index}>
+                  {x.output}: {x.fuzzy}
+                </div>
+              ))}
+            </div>
+          ))}
+      </div>
       <ChartFuzzy />
+
+      {console.log(pertinences)}
     </div>
   );
 }

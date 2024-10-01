@@ -2,14 +2,15 @@ import Logic from "es6-fuzz";
 import Trapezoid from "es6-fuzz/lib/curve/trapezoid";
 import * as boon from "boon-js";
 import RuleBase from "../lib/RuleBase";
-export const rulesFuzzy = (
+export const RulesFuzzy = (
   temperature,
   humidity,
   roomSize,
-  respiratoryProblem
+  respiratoryProblem,
+  setPertinences
 ) => {
   var logicTemperature = new Logic();
-  const lowTemperature = new Trapezoid(0, 0, 15, 20);
+  const lowTemperature = new Trapezoid(-1, -1, 15, 20);
   const moderateTemperature = new Trapezoid(15, 20, 25, 30);
   const highTemperature = new Trapezoid(25, 30, 41, 41);
 
@@ -18,7 +19,7 @@ export const rulesFuzzy = (
   logicTemperature.or("high", highTemperature);
 
   var logicHumidity = new Logic();
-  const lowHumidity = new Trapezoid(0, 0, 30, 40);
+  const lowHumidity = new Trapezoid(-1, -1, 30, 40);
   const moderateHumidity = new Trapezoid(30, 40, 60, 70);
   const highHumidity = new Trapezoid(60, 70, 101, 101);
 
@@ -27,23 +28,23 @@ export const rulesFuzzy = (
   logicHumidity.or("high", highHumidity);
 
   var logicRoom = new Logic();
-  const smallRoom = new Trapezoid(9, 9, 15, 20); // 9 a 20 m²
+  const smallRoom = new Trapezoid(8, 8, 15, 20); // 9 a 20 m²
   const mediumRoom = new Trapezoid(15, 20, 30, 40); // 20 a 40 m²
-  const bigRoom = new Trapezoid(40, 50, 61, 61); // 40 a 60 m²
+  const bigRoom = new Trapezoid(30, 40, 50, 61); // 40 a 60 m²
 
   logicRoom.init("small", smallRoom);
   logicRoom.or("medium", mediumRoom);
   logicRoom.or("big", bigRoom);
 
   var logicRespiratoryProblem = new Logic();
-  const noProblem = new Trapezoid(0, 0, 10, 20); // Representa um nível de problema próximo a zero
+  const noProblem = new Trapezoid(-1, -1, 10, 20); // Representa um nível de problema próximo a zero
   const mildProblem = new Trapezoid(15, 20, 40, 50); // Problema leve
   const severeProblem = new Trapezoid(40, 50, 101, 101); // Problema grave
 
   logicRespiratoryProblem.init("no", noProblem);
   logicRespiratoryProblem.or("mild", mildProblem);
   logicRespiratoryProblem.or("severe", severeProblem);
-
+  console.log(logicTemperature.rules);
   const assessments = getAssessments();
 
   const resTemperature = logicTemperature.defuzzify(temperature, "temperature");
@@ -62,6 +63,14 @@ export const rulesFuzzy = (
   };
 
   assessments.evaluateAllRules(jsBoonInput);
+
+  getPertinence(
+    logicTemperature,
+    logicHumidity,
+    logicRoom,
+    logicRespiratoryProblem,
+    setPertinences
+  );
 
   return assessments.getResult();
 };
@@ -574,4 +583,33 @@ const getAssessments = () => {
   );
 
   return assessments;
+};
+
+const getPertinence = (
+  logicTemperature,
+  logicHumidity,
+  logicRoom,
+  logicRespiratoryProblem,
+  setPertinences
+) => {
+  setPertinences({
+    Temperatura: logicTemperature.rules.map(({ output, fuzzy }) => ({
+      output,
+      fuzzy: Number(fuzzy.toFixed(2)),
+    })),
+    Umidade: logicHumidity.rules.map(({ output, fuzzy }) => ({
+      output,
+      fuzzy: Number(fuzzy.toFixed(2)),
+    })),
+    "Tamanho do cômodo": logicRoom.rules.map(({ output, fuzzy }) => ({
+      output,
+      fuzzy: Number(fuzzy.toFixed(2)),
+    })),
+    "Problema respiratório": logicRespiratoryProblem.rules.map(
+      ({ output, fuzzy }) => ({
+        output,
+        fuzzy: Number(fuzzy.toFixed(2)),
+      })
+    ),
+  });
 };
