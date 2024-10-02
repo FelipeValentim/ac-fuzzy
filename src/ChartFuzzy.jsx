@@ -124,12 +124,132 @@ const ChartFuzzy = () => {
     labels: ["Desligado", 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16],
     datasets: [
       {
-        label: "Pertinência do Resultado",
-        data: [
-          0, 0.083, 0.167, 0.25, 0.333, 0.417, 0.5, 0.583, 0.667, 0.75, 0.833,
-          0.917, 1.0,
-        ],
+        label: "Desligado",
+        data: [1, 0],
         borderColor: "purple",
+        fill: false,
+      },
+      {
+        label: "28",
+        data: [0, 1, 0],
+        borderColor: "red",
+        fill: false,
+      },
+      {
+        label: "27",
+        data: [null, 0, 1, 0],
+        borderColor: "green",
+        fill: false,
+      },
+      {
+        label: "26",
+        data: [null, null, 0, 1, 0],
+        borderColor: "blue",
+        fill: false,
+      },
+      {
+        label: "25",
+        data: [null, null, null, 0, 1, 0],
+        borderColor: "orange",
+        fill: false,
+      },
+      {
+        label: "24",
+        data: [null, null, null, null, 0, 1, 0],
+        borderColor: "cyan",
+        fill: false,
+      },
+      {
+        label: "23",
+        data: [null, null, null, null, null, 0, 1, 0],
+        borderColor: "magenta",
+        fill: false,
+      },
+      {
+        label: "22",
+        data: [null, null, null, null, null, null, 0, 1, 0],
+        borderColor: "yellow",
+        fill: false,
+      },
+      {
+        label: "21",
+        data: [null, null, null, null, null, null, null, 0, 1, 0],
+        borderColor: "lime",
+        fill: false,
+      },
+      {
+        label: "20",
+        data: [null, null, null, null, null, null, null, null, 0, 1, 0],
+        borderColor: "teal",
+        fill: false,
+      },
+      {
+        label: "19",
+        data: [null, null, null, null, null, null, null, null, null, 0, 1, 0],
+        borderColor: "navy",
+        fill: false,
+      },
+      {
+        label: "18",
+        data: [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          1,
+          0,
+        ],
+        borderColor: "gray",
+        fill: false,
+      },
+      {
+        label: "17",
+        data: [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          1,
+          0,
+        ],
+        borderColor: "brown",
+        fill: false,
+      },
+      {
+        label: "16",
+        data: [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          1,
+          0,
+        ],
+        borderColor: "black",
         fill: false,
       },
     ],
@@ -141,7 +261,7 @@ const ChartFuzzy = () => {
       <Line data={humidityData} />
       <Line data={roomSizeData} />
       <Line data={respiratoryProblemData} />
-      <Line data={resultData} />
+      {/* <Line data={resultData} /> */}
       {/* Adicionando o gráfico de Problemas Respiratórios */}
     </div>
   );

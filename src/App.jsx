@@ -3,6 +3,7 @@ import "./App.css"; // Importando seu CSS
 
 import { RulesFuzzy } from "./RulesFuzzy";
 import ChartFuzzy from "./ChartFuzzy";
+import { translations } from "./locale";
 
 function App() {
   const [answer, setAnswer] = useState({
@@ -12,7 +13,23 @@ function App() {
     respiratoryProblem: 0,
   });
   const [pertinences, setPertinences] = useState();
+  const [issues, setIssues] = useState({
+    asma: { checked: false, value: 40 },
+    rinite: { checked: false, value: 15 },
+    sinusite: { checked: false, value: 15 },
+    bronquite: { checked: false, value: 30 },
+  });
 
+  const handleCheckboxChange = (event) => {
+    const { id, checked } = event.target;
+    setIssues((prevIssues) => ({
+      ...prevIssues,
+      [id]: {
+        ...prevIssues[id],
+        checked: checked,
+      },
+    }));
+  };
   const [result, setResult] = useState("");
   // Criar uma distribuição normal com média 0 e desvio padrão 1
 
@@ -32,7 +49,9 @@ function App() {
       Number(answer.temperature),
       Number(answer.humidity),
       Number(answer.roomSize),
-      Number(answer.respiratoryProblem)
+      Object.values(issues).reduce((total, issue) => {
+        return issue.checked ? total + issue.value : total;
+      }, 0)
     );
     setResult(acResult);
   };
@@ -42,7 +61,7 @@ function App() {
       <h1>Monitoramento de Ar-Condicionado</h1>
       <form onSubmit={handleSubmit} className="form-container">
         <div className="form-group">
-          <label>
+          <div className="form-label">
             Temperatura (0-40°C):
             <input
               type="number"
@@ -55,10 +74,10 @@ function App() {
               required
               className="form-input"
             />
-          </label>
+          </div>
         </div>
         <div className="form-group">
-          <label>
+          <div className="form-label">
             Umidade (0-100%):
             <input
               type="number"
@@ -71,10 +90,10 @@ function App() {
               required
               className="form-input"
             />
-          </label>
+          </div>
         </div>
         <div className="form-group">
-          <label>
+          <div className="form-label">
             Tamanho do cômodo (9-60m²):
             <input
               type="number"
@@ -87,25 +106,50 @@ function App() {
               required
               className="form-input"
             />
-          </label>
+          </div>
         </div>
         <div className="form-group">
-          <label>
+          <div className="form-label">
             Tem problemas respiratórios?
-            <select
-              className="form-input"
-              onChange={(e) =>
-                setAnswer({
-                  ...answer,
-                  respiratoryProblem: Number(e.target.value),
-                })
-              }
-            >
-              <option value={0}>Não</option>
-              <option value={40}>Leve</option>
-              <option value={100}>Grave</option>
-            </select>
-          </label>
+            <div className="issues">
+              <label htmlFor="asma">
+                <input
+                  type="checkbox"
+                  id="asma"
+                  checked={issues.asma.checked}
+                  onChange={handleCheckboxChange}
+                />
+                <span>Asma</span>
+              </label>
+              <label htmlFor="rinite">
+                <input
+                  type="checkbox"
+                  id="rinite"
+                  checked={issues.rinite.checked}
+                  onChange={handleCheckboxChange}
+                />
+                <span>Rinite</span>
+              </label>
+              <label htmlFor="sinusite">
+                <input
+                  type="checkbox"
+                  id="sinusite"
+                  checked={issues.sinusite.checked}
+                  onChange={handleCheckboxChange}
+                />
+                <span>Sinusite</span>
+              </label>
+              <label htmlFor="bronquite">
+                <input
+                  type="checkbox"
+                  id="bronquite"
+                  checked={issues.bronquite.checked}
+                  onChange={handleCheckboxChange}
+                />
+                <span>Bronquite</span>
+              </label>
+            </div>
+          </div>
         </div>
         <button type="submit" className="submit-button">
           Calcular
@@ -125,7 +169,7 @@ function App() {
               <h3>{name}</h3>
               {pertinence.map((x, index) => (
                 <div key={index}>
-                  {x.output}: {x.fuzzy}
+                  {translations[x.output] || x.output}: {x.fuzzy}
                 </div>
               ))}
             </div>
