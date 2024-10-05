@@ -78,7 +78,6 @@ export const RulesFuzzy = (
 const getAssessments = () => {
   const assessments = new RuleBase();
 
-  // Para cômodos pequenos e problemas respiratórios "no"
   assessments.addRule(
     boon.getEvaluator(
       "temperature.low AND humidity.low AND room.small AND respiratory.no"
@@ -91,50 +90,6 @@ const getAssessments = () => {
     ),
     "Desligado"
   );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.low AND humidity.high AND room.small AND respiratory.no"
-    ),
-    28
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.low AND room.small AND respiratory.no"
-    ),
-    26
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.moderate AND room.small AND respiratory.no"
-    ),
-    25
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.high AND room.small AND respiratory.no"
-    ),
-    24
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.low AND room.small AND respiratory.no"
-    ),
-    22
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.moderate AND room.small AND respiratory.no"
-    ),
-    21
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.high AND room.small AND respiratory.no"
-    ),
-    20
-  );
-
-  // Para cômodos pequenos e problemas respiratórios "mild"
   assessments.addRule(
     boon.getEvaluator(
       "temperature.low AND humidity.low AND room.small AND respiratory.mild"
@@ -155,44 +110,6 @@ const getAssessments = () => {
   );
   assessments.addRule(
     boon.getEvaluator(
-      "temperature.moderate AND humidity.low AND room.small AND respiratory.mild"
-    ),
-    27
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.moderate AND room.small AND respiratory.mild"
-    ),
-    26
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.high AND room.small AND respiratory.mild"
-    ),
-    25
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.low AND room.small AND respiratory.mild"
-    ),
-    24
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.moderate AND room.small AND respiratory.mild"
-    ),
-    23
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.high AND room.small AND respiratory.mild"
-    ),
-    22
-  );
-
-  // Para cômodos pequenos e problemas respiratórios "severe"
-  assessments.addRule(
-    boon.getEvaluator(
       "temperature.low AND humidity.low AND room.small AND respiratory.severe"
     ),
     "Desligado"
@@ -211,44 +128,6 @@ const getAssessments = () => {
   );
   assessments.addRule(
     boon.getEvaluator(
-      "temperature.moderate AND humidity.low AND room.small AND respiratory.severe"
-    ),
-    28
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.moderate AND room.small AND respiratory.severe"
-    ),
-    27
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.high AND room.small AND respiratory.severe"
-    ),
-    26
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.low AND room.small AND respiratory.severe"
-    ),
-    26
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.moderate AND room.small AND respiratory.severe"
-    ),
-    25
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.high AND room.small AND respiratory.severe"
-    ),
-    24
-  );
-
-  // Para cômodos médios e problemas respiratórios "no"
-  assessments.addRule(
-    boon.getEvaluator(
       "temperature.low AND humidity.low AND room.medium AND respiratory.no"
     ),
     "Desligado"
@@ -261,50 +140,6 @@ const getAssessments = () => {
   );
   assessments.addRule(
     boon.getEvaluator(
-      "temperature.low AND humidity.high AND room.medium AND respiratory.no"
-    ),
-    25
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.low AND room.medium AND respiratory.no"
-    ),
-    24
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.moderate AND room.medium AND respiratory.no"
-    ),
-    23
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.high AND room.medium AND respiratory.no"
-    ),
-    22
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.low AND room.medium AND respiratory.no"
-    ),
-    20
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.moderate AND room.medium AND respiratory.no"
-    ),
-    18
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.high AND room.medium AND respiratory.no"
-    ),
-    17
-  );
-
-  // Para cômodos médios e problemas respiratórios "mild"
-  assessments.addRule(
-    boon.getEvaluator(
       "temperature.low AND humidity.low AND room.medium AND respiratory.mild"
     ),
     "Desligado"
@@ -315,50 +150,6 @@ const getAssessments = () => {
     ),
     "Desligado"
   );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.low AND humidity.high AND room.medium AND respiratory.mild"
-    ),
-    26
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.low AND room.medium AND respiratory.mild"
-    ),
-    25
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.moderate AND room.medium AND respiratory.mild"
-    ),
-    24
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.high AND room.medium AND respiratory.mild"
-    ),
-    23
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.low AND room.medium AND respiratory.mild"
-    ),
-    22
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.moderate AND room.medium AND respiratory.mild"
-    ),
-    21
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.high AND room.medium AND respiratory.mild"
-    ),
-    20
-  );
-
-  // Para cômodos médios e problemas respiratórios "severe"
   assessments.addRule(
     boon.getEvaluator(
       "temperature.low AND humidity.low AND room.medium AND respiratory.severe"
@@ -379,44 +170,6 @@ const getAssessments = () => {
   );
   assessments.addRule(
     boon.getEvaluator(
-      "temperature.moderate AND humidity.low AND room.medium AND respiratory.severe"
-    ),
-    28
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.moderate AND room.medium AND respiratory.severe"
-    ),
-    26
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.high AND room.medium AND respiratory.severe"
-    ),
-    25
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.low AND room.medium AND respiratory.severe"
-    ),
-    24
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.moderate AND room.medium AND respiratory.severe"
-    ),
-    23
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.high AND room.medium AND respiratory.severe"
-    ),
-    22
-  );
-
-  // Para cômodos grandes e problemas respiratórios "no"
-  assessments.addRule(
-    boon.getEvaluator(
       "temperature.low AND humidity.low AND room.big AND respiratory.no"
     ),
     "Desligado"
@@ -429,104 +182,10 @@ const getAssessments = () => {
   );
   assessments.addRule(
     boon.getEvaluator(
-      "temperature.low AND humidity.high AND room.big AND respiratory.no"
-    ),
-    26
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.low AND room.big AND respiratory.no"
-    ),
-    23
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.moderate AND room.big AND respiratory.no"
-    ),
-    21
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.high AND room.big AND respiratory.no"
-    ),
-    19
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.low AND room.big AND respiratory.no"
-    ),
-    18
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.moderate AND room.big AND respiratory.no"
-    ),
-    17
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.high AND room.big AND respiratory.no"
-    ),
-    16
-  );
-
-  // Para cômodos grandes e problemas respiratórios "mild"
-  assessments.addRule(
-    boon.getEvaluator(
       "temperature.low AND humidity.low AND room.big AND respiratory.mild"
     ),
     "Desligado"
   );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.low AND humidity.moderate AND room.big AND respiratory.mild"
-    ),
-    28
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.low AND humidity.high AND room.big AND respiratory.mild"
-    ),
-    27
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.low AND room.big AND respiratory.mild"
-    ),
-    25
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.moderate AND room.big AND respiratory.mild"
-    ),
-    24
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.moderate AND humidity.high AND room.big AND respiratory.mild"
-    ),
-    23
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.low AND room.big AND respiratory.mild"
-    ),
-    22
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.moderate AND room.big AND respiratory.mild"
-    ),
-    21
-  );
-  assessments.addRule(
-    boon.getEvaluator(
-      "temperature.high AND humidity.high AND room.big AND respiratory.mild"
-    ),
-    20
-  );
-
-  // Para cômodos grandes e problemas respiratórios "severe"
   assessments.addRule(
     boon.getEvaluator(
       "temperature.low AND humidity.low AND room.big AND respiratory.severe"
@@ -547,39 +206,180 @@ const getAssessments = () => {
   );
   assessments.addRule(
     boon.getEvaluator(
-      "temperature.moderate AND humidity.low AND room.big AND respiratory.severe"
+      "temperature.low AND humidity.high AND room.small AND respiratory.no"
     ),
     28
   );
   assessments.addRule(
     boon.getEvaluator(
-      "temperature.moderate AND humidity.moderate AND room.big AND respiratory.severe"
+      "temperature.moderate AND humidity.low AND respiratory.severe AND (room.small OR room.medium OR room.big)"
+    ),
+    28
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.low AND humidity.moderate AND room.big AND respiratory.mild"
+    ),
+    28
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.moderate AND ((humidity.low AND room.small AND respiratory.mild) OR (humidity.moderate AND room.small AND respiratory.severe))"
+    ),
+    27
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.low AND humidity.high AND room.big AND respiratory.mild"
+    ),
+    27
+  );
+
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.moderate AND room.small AND ((humidity.low AND respiratory.no) OR (humidity.moderate AND respiratory.mild) OR (humidity.high AND respiratory.severe))"
     ),
     26
   );
   assessments.addRule(
     boon.getEvaluator(
-      "temperature.moderate AND humidity.high AND room.big AND respiratory.severe"
+      "temperature.high AND humidity.low AND room.small AND respiratory.severe"
+    ),
+    26
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.low AND humidity.high AND ((room.medium AND respiratory.mild) OR (room.big AND respiratory.no))"
+    ),
+    26
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.moderate AND humidity.moderate AND ((room.medium OR room.big) AND respiratory.severe)"
+    ),
+    26
+  );
+
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.moderate AND room.small AND ((humidity.moderate AND respiratory.no) OR (humidity.high AND respiratory.mild))"
     ),
     25
   );
   assessments.addRule(
     boon.getEvaluator(
-      "temperature.high AND humidity.low AND room.big AND respiratory.severe"
+      "temperature.high AND humidity.moderate AND room.small AND respiratory.severe"
+    ),
+    25
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.low AND humidity.high AND room.medium AND respiratory.no"
+    ),
+    25
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.moderate AND room.medium AND ((humidity.low AND respiratory.mild) OR (humidity.high AND respiratory.severe))"
+    ),
+    25
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.moderate AND room.big AND ((humidity.low AND respiratory.mild) OR (humidity.high AND respiratory.severe))"
+    ),
+    25
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "room.small AND ((temperature.moderate AND humidity.high AND respiratory.no) OR (temperature.high AND humidity.low AND respiratory.mild) OR (temperature.high AND humidity.high AND respiratory.severe))"
     ),
     24
   );
   assessments.addRule(
     boon.getEvaluator(
-      "temperature.high AND humidity.moderate AND room.big AND respiratory.severe"
+      "room.medium AND ((temperature.moderate AND humidity.low AND respiratory.no) OR (temperature.moderate AND humidity.moderate AND respiratory.mild) OR (temperature.high AND humidity.low AND respiratory.severe))"
+    ),
+    24
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "room.big AND ((temperature.moderate AND humidity.moderate AND respiratory.mild) OR (temperature.high AND humidity.low AND respiratory.severe))"
+    ),
+    24
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.high AND humidity.moderate AND ((room.small AND respiratory.mild) OR (room.medium AND respiratory.severe) OR (room.big AND respiratory.severe))"
     ),
     23
   );
   assessments.addRule(
     boon.getEvaluator(
-      "temperature.high AND humidity.high AND room.big AND respiratory.severe"
+      "temperature.moderate AND ((humidity.moderate AND room.medium AND (respiratory.no OR respiratory.mild)) OR (humidity.low AND room.big AND respiratory.no) OR (humidity.high AND room.big AND respiratory.mild))"
+    ),
+    23
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.high AND humidity.low AND ((room.small AND respiratory.no) OR (room.medium AND respiratory.mild) OR (room.big AND respiratory.mild))"
     ),
     22
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.high AND humidity.high AND ((room.small AND respiratory.mild) OR (room.medium AND respiratory.severe) OR (room.big AND respiratory.severe))"
+    ),
+    22
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.moderate AND humidity.high AND room.medium AND respiratory.no"
+    ),
+    22
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.high AND humidity.moderate AND ((room.small AND respiratory.no) OR (room.medium AND respiratory.mild) OR (room.big AND respiratory.mild))"
+    ),
+    21
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.moderate AND humidity.moderate AND room.big AND respiratory.no"
+    ),
+    21
+  );
+
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.high AND ((humidity.high AND ((room.small AND respiratory.no) OR (room.medium AND respiratory.mild) OR (room.big AND respiratory.mild))) OR (humidity.low AND room.medium AND respiratory.no))"
+    ),
+    20
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.moderate AND humidity.high AND room.big AND respiratory.no"
+    ),
+    19
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.high AND respiratory.no AND ((humidity.moderate AND room.medium) OR (humidity.low AND room.big))"
+    ),
+    18
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.high AND respiratory.no AND ((humidity.high AND room.medium) OR (humidity.moderate AND room.big))"
+    ),
+    17
+  );
+  assessments.addRule(
+    boon.getEvaluator(
+      "temperature.high AND humidity.high AND room.big AND respiratory.no"
+    ),
+    16
   );
 
   return assessments;
